@@ -1,0 +1,76 @@
+{% extends 'plantilla/base.html' %}
+{% from 'macro/_pagination.html' import m_pagination %}
+{% block contenedor %}
+<div class="col-md-12">
+<table class="table table-striped  bg-white table-hover table-s">
+    {% for receta in recetas.items %}
+    <tbody>
+        <tr>
+            <td>
+                <div class="col-8">
+                    <a href="{{ url_for('receta.mostrar', id=receta['id']) }}" class="btn btn-outline-primary">{{ receta['nombre'] }}</a>
+                </div>
+            </td>
+            <td>
+                <div class="col-2">
+                    <a href="{{ url_for('receta.listado', tipo=receta['tipo']) }}" class="btn btn-outline-info">{{ receta['tipo'] }}</a>
+                </div>
+            </td>
+            <div class="btn-group">
+                <td>
+                    <div class="col-2">
+                        <a type="button" class="btn btn-secondary mt-2" href="{{ url_for('receta.editar', id=receta['id']) }}" ><i class="fa fa-edit" data-toggle="tooltip" data-placement="top" title="Editar {{ receta['nombre'] }}"></i> </a>
+                        <!-- <a type="button" class="btn btn-secondary btn-block glyphicon glyphicon-trash" href="{{ url_for('receta.eliminar', id=receta['id']) }}" ></a>
+-->                      <button data-toggle="modal" data-target="#deleteModal" data-nombre="{{ receta['nombre'] }}" data-id="{{ receta['id'] }}" class="btn btn-danger mt-2" href="{{ url_for('receta.eliminar', id=receta['id']) }}"><i class="fa fa-trash" data-toggle="tooltip" data-placement="top" title="Eliminar {{ receta['nombre'] }}"></i> </button>
+                    </div>
+                </td>
+            </div>
+        </tr>
+    </tbody>
+    {% endfor %}
+</table>
+<div>
+    <a href="{{ url_for('receta.nueva') }}" class="btn btn-success btn-lg btn-block mb-3">Añadir Receta</a>
+</div>
+<!-- TODO ESTO ES PARA COLOCAR LA PAGINACION-->
+
+</div>
+{{ m_pagination(recetas) }}
+
+<div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Borrar: <span></span></h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        ¿Seguro que quieres eliminar la receta?
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+        <a href="#" id="borrarReceta" class="btn btn-danger">Borrar</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+    window.onload= function(){
+        $('#deleteModal').on('show.bs.modal', function (event) {
+          var button = $(event.relatedTarget) // Button that triggered the modal
+          var nombre = button.data('nombre') // Extract info from data-* attributes
+          var id = button.data('id') // Extract info from data-* attributes
+          // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
+          // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
+          var modal = $(this)
+          modal.find('.modal-title span').text(nombre)
+
+          $("#borrarReceta").attr("href","/receta/eliminar/"+id)
+        })
+    }
+</script>
+
+{% endblock %}

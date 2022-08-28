@@ -1,0 +1,49 @@
+.mostrar {
+    resize:none;
+    background-color: white;
+    overflow: auto;
+    resize: vertical;
+}
+
+
+.centrar-texto {
+    text-align: center;
+}
+.sombra {
+  box-shadow: 0 0 10px 5px #48529944;;
+}
+
+.sombraMultiple {
+  box-shadow:
+    5px 5px 10px black,
+    10px 10px 10px red,
+    20px 20px 10px blue,
+    10px 10px 10px rgb(0,0,0, 0.5) inset;
+}
+
+.sombraInterior {
+  /* Sombra exterior que se desplaza hacia la zona inferior-derecha */
+  box-shadow: 10px 10px 5px black;
+
+  /* Sombra interior que se desplaza hacia la zona inferior-derecha */
+  box-shadow: -10px -10px 5px black inset;
+}
+
+
+body {
+ background-image: linear-gradient(to right, rgba(255,255,255,0), rgba(255,255,255,255));
+ background-color: #27282F;
+ -webkit-background-size: cover;
+ -moz-background-size: cover;
+ background-size: cover;
+ -o-background-size: cover;
+ margin-top:5%;
+ background-size: 100% 225%;
+
+}
+
+
+.cardRedondeo {
+
+  border-radius: 7%;
+}
