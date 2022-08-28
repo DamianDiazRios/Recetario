@@ -16,9 +16,9 @@ ckeditor = CKEditor(app)
 app.config['CKEDITOR_SERVER_LOCAL']=True
 
 #Esta parte para implementar el buscador
-app.config['MYSQL_HOST']= '192.168.100.7'
-app.config['MYSQL_USER']= 'damian'
-app.config['MYSQL_PASSWORD']= 'damian82'
+app.config['MYSQL_HOST']= 'ip_servidor'
+app.config['MYSQL_USER']= 'usuario'
+app.config['MYSQL_PASSWORD']= 'clave'
 app.config['MYSQL_DB']= 'Recetario'
 mysql = MySQL(app)
 #########################################
