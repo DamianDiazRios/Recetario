@@ -1,0 +1,24 @@
+{% extends 'plantilla/base.html' %}
+{% block contenedor %}
+<div class="form-small">
+    <h3 class="text-center mb-4 text-primary mt-4 mb-5"><i class="fa fa-pizza-slice fa-3x" style="color:#28a745"></i></h3>
+
+    <form action="{{ url_for('fautenticacion.login') }}" method="POST">
+        <!--{% include 'autenticacion/_formulario_usuario.html' %}-->
+        {{ formulario.usuario.label }}
+        {{ formulario.usuario(class="form-control") }}
+        {{ formulario.password.label }}
+        {{ formulario.password(class="form-control") }}
+        {{ formulario.next() }}
+        <input class="btn btn-success -btn-lg btn-block mt-2" type="submit" value="Enviar">
+    </form>
+<br/>
+<div class="col-md-4"></div>
+<script>
+    var params = new URLSearchParams(window.location.search)
+    if(params.has("next"))
+        document.getElementById("next").value = params.get("next")
+</script>
+</div>
+{% endblock %}
+

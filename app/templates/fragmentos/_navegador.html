@@ -1,0 +1,51 @@
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light sombra">
+  <a class="navbar-brand" href="{{ url_for('receta.inicio') }}">Recetario</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      {% if current_user.usuario %}
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          MENÚ
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" href="{{ url_for('receta.nueva') }}">Añadir Receta</a>
+          <a class="dropdown-item" href="{{ url_for('receta.index') }}">Eliminar Receta</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" href="{{ url_for('receta.index') }}">Lista de Recetas <span class="sr-only">(current)</span></a>
+        </div>
+      </li>
+      {% endif %}
+    </ul>
+
+    <form class="form-inline my-2 my-lg-0" action="/vistas/buscar" method="POST">
+      <input class="form-control mr-sm-2" type="search" name="receta" placeholder="Buscar" aria-label="Buscar">
+      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Buscar</button>
+    </form>
+
+    <ul class="navbar-nav">
+      {% if current_user.usuario %}
+      {% else %}
+      <li class="nav-item active">
+        <a class="nav-link" href="{{ url_for('fautenticacion.login') }}">Login</a>
+      </li>
+      {% endif %}
+      {% if current_user.usuario %}
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          {{ current_user.usuario }}
+        </a>
+      <div class="dropdown-menu dropdown-menu-right" aria-label="navbarDropdown">
+        <a class="dropdown-item" href="#">Perfil</a>
+        <a class="dropdown-item" href="{{ url_for('fautenticacion.logout') }}">Logout</a>
+      </div>
+      </li>
+      {% endif %}
+    </ul>
+  </div>
+</nav>
+<br/>

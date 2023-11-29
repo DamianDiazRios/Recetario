@@ -1,0 +1,38 @@
+{% extends 'plantilla/base.html' %}
+{% block contenedor %}
+
+<div class="col-md-12">
+
+    <div class="jumbotron pb-3 pt-3 pl-4 pr-4 sombra">
+        <div class="row justify-content-center align-items-center">
+            <h3>{{ receta['nombre'] }}</h3>
+        </div>
+        <br/>
+        <div class="media img-fluid">
+		    <img src="{{ url_for('static',filename='uploads/')}}{{receta['foto'] }}" class="img-fluid rounded mx-auto d-block" width="30%" alt="Imagen de Receta"/>
+        </div>
+        <h5 class="centrar-texto p-3">Tipo: {{ receta['tipo'] }}</h5>
+        <div class="#">
+            <table class="table">
+                <th>Ingredientes</th>
+                    <tr>
+                        <td>{{ receta.ingredientes | safe }}</td>
+                    </tr>
+                <br/>
+                    <tr>
+                    <th>Elaboración</th>
+                    <tr>
+                        <td>{{ receta['elaboracion']|safe }}</td>
+                    </tr>
+                <br/>
+                    <th>Observaciones</th>
+                    <tr>
+                        <td>{{ receta['observaciones']|safe }}</td>
+                    </tr>
+            </table>
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}

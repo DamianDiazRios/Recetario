@@ -1,0 +1,14 @@
+{% extends 'plantilla/base.html' %}
+{% block contenedor %}
+    <form action="{{ url_for('receta.editar', id=receta.id) }}" method="POST" enctype="multipart/form-data">
+
+        {% include 'vistas/_formulario.html' %}
+        <input type="submit" value="Editar">
+    </form>
+
+
+    {{ ckeditor.load() }}
+    {{ ckeditor.config(name='ingredientes') }}
+
+<br/>
+{% endblock %}

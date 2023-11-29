@@ -1,0 +1,24 @@
+{% extends 'plantilla/base.html' %}
+{% block contenedor %}
+
+<h3 style="text-align:center">Borrar receta</h3>
+<div class="container">
+  <div class="row">
+    <div class="col-sm-4">
+    </div>
+    <div class="col-sm-6">
+    <p>¿Estás seguro de borrar el trabajo: {{receta.nombre}}</p>
+      <div class="col-sm-2"></div>
+      <div class="col-sm-2">
+      <form class="form-horizontal"  method="post">
+        <div class="form-group">
+          {{formularios.si(class="btn btn-publi") }} {{formularios.no(class="btn btn-publi")}}<br/><br/>
+        </div>
+      </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+{% endblock %}

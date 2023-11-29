@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>RECETARIO</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='bootstrap/css/bootstrap.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='fontawesome/css/all.min.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='recetario/css/estilo.css') }}">
+
+
+
+</head>
+<body>
+
+<div class="container">
+            {% include 'fragmentos/_navegador.html' %}
+            {% include 'fragmentos/_alertas.html' %}
+    <div class="row justify-content-center align-items-center">
+            {% block contenedor %}
+            {% endblock %}
+
+        <script src="{{ url_for('static', filename='global/js/jquery.js') }}"></script>
+        <script src="{{ url_for('static', filename='global/js/popper.min.js') }}"></script>
+        <script src="{{ url_for('static', filename='bootstrap/js/bootstrap.min.js') }}"></script>
+        <script src="{{ url_for('static', filename='recetario/js/main.js') }}"></script>
+    </div>
+    {% include 'fragmentos/_footer.html' %}
+</div>
+
+</body>
+</html>

@@ -1,0 +1,25 @@
+{% extends 'plantilla/base.html' %}
+{% block contenedor %}
+
+{% for receta in recetas %}
+    <div class="col">
+        <div class="card mt-5 sombra cardRedondeo" style="width: 18rem;">
+          <img src="/static/{{ receta['foto_tipo'] }}" class="card-body" >
+          <div class="card-body">
+            <h5 class="card-title text-center">{{ receta['tipo'] }}</h5>
+            <p class="card-text "></p>
+              <div class="col text-center">
+                <a href="{{ url_for('receta.listado', tipo=receta['tipo']) }}" class="btn btn-primary ">Recetas</a>
+                  <p></p>
+              </div>
+          </div>
+        </div>
+    </div>
+{% endfor %}
+    <div class="col-12">
+    <br/>
+        <div>
+            <a class="btn btn-success btn-lg btn-block"  href="{{ url_for('receta.nueva') }}">Añadir Receta</a>
+        </div>
+    </div>
+{% endblock %}
